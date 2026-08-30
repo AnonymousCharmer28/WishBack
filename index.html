@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WishBack 🎂 — Remember the people who remember you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>Wish<span>Back</span> 🎂</h1>
+      <p class="tagline">Remember the people who remember you.</p>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-view="dashboard">Dashboard</button>
+      <button class="tab" data-view="calendar">Calendar</button>
+      <button class="tab" data-view="circle">Your Circle</button>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <main class="main-col">
+
+      <!-- ===== DASHBOARD VIEW ===== -->
+      <section class="view" id="view-dashboard">
+
+        <div class="score-card" id="scoreCard" hidden>
+          <div class="score-number" id="scoreNumber">—</div>
+          <div class="score-detail">
+            <p class="score-label">WishBack Score</p>
+            <p class="score-breakdown" id="scoreBreakdown"></p>
+            <p class="score-explain">Calculated only from wish events you've logged: reciprocated birthday-years ÷ birthday-years with any activity. This isn't a measure of anyone's character — just a record of timing.</p>
+          </div>
+        </div>
+
+        <section class="card">
+          <h2>Reciprocity at a glance</h2>
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <p class="timing-subhead">Timing breakdown</p>
+          <div class="timing-row" id="timingRow"></div>
+        </section>
+
+        <section class="card">
+          <h2>💌 Recently</h2>
+          <div id="recentList" class="zone-list"></div>
+        </section>
+
+      </section>
+
+      <!-- ===== CALENDAR VIEW ===== -->
+      <section class="view" id="view-calendar" hidden>
+        <section class="card">
+          <div class="calendar-head">
+            <button class="btn-ghost" id="calPrev">← Prev</button>
+            <h2 id="calMonthLabel"></h2>
+            <button class="btn-ghost" id="calNext">Next →</button>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+      </section>
+
+      <!-- ===== YOUR CIRCLE VIEW ===== -->
+      <section class="view" id="view-circle" hidden>
+
+        <section class="card">
+          <h2>Add someone to track</h2>
+          <form id="personForm" class="grid-form">
+            <div class="field">
+              <label for="personName">Name</label>
+              <input type="text" id="personName" placeholder="Ananya" required />
+            </div>
+            <div class="field">
+              <label for="personBday">Birthday</label>
+              <input type="date" id="personBday" required />
+            </div>
+            <div class="field">
+              <label for="personTag">Relationship <span class="optional">(optional)</span></label>
+              <input type="text" id="personTag" placeholder="Friend" />
+            </div>
+            <button type="submit" class="btn-primary">Add to circle</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="circle-toolbar">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search your circle..." />
+            <select id="tagFilter" class="filter-select">
+              <option value="">All relationships</option>
+            </select>
+            <label class="checkbox-label">
+              <input type="checkbox" id="upcomingFilter" />
+              Upcoming (30 days)
+            </label>
+          </div>
+          <div id="circleList" class="circle-grid"></div>
+        </section>
+
+      </section>
+
+    </main>
+
+    <!-- ===== TODAY SIDEBAR ===== -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <p class="sidebar-greeting" id="greeting"></p>
+
+        <div id="todayBirthdays"></div>
+
+        <p class="sidebar-subhead" id="weekHeadline"></p>
+        <div id="weekList" class="sidebar-list"></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <p>Everything here stays in your browser. Nothing is sent anywhere.</p>
+  </footer>
+
+</div>
+
+<!-- ===== Person Detail Modal ===== -->
+<div class="modal-backdrop" id="personModal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal="personModal" aria-label="Close">&times;</button>
+
+    <div id="personModalBody"></div>
+  </div>
+</div>
+
+<!-- ===== Edit Person Modal ===== -->
+<div class="modal-backdrop" id="editPersonModal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal="editPersonModal" aria-label="Close">&times;</button>
+    <h2>Edit person</h2>
+    <form id="editPersonForm" class="grid-form">
+      <input type="hidden" id="editPersonId" />
+      <div class="field">
+        <label for="editPersonName">Name</label>
+        <input type="text" id="editPersonName" required />
+      </div>
+      <div class="field">
+        <label for="editPersonBday">Birthday</label>
+        <input type="date" id="editPersonBday" required />
+      </div>
+      <div class="field">
+        <label for="editPersonTag">Relationship</label>
+        <input type="text" id="editPersonTag" />
+      </div>
+      <button type="submit" class="btn-primary">Save changes</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== Edit Wish Event Modal ===== -->
+<div class="modal-backdrop" id="editEventModal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" data-close-modal="editEventModal" aria-label="Close">&times;</button>
+    <h2>Edit wish event</h2>
+    <form id="editEventForm" class="grid-form">
+      <input type="hidden" id="editEventId" />
+      <div class="field">
+        <label for="editEventDirection">Direction</label>
+        <select id="editEventDirection">
+          <option value="received">They wished me</option>
+          <option value="sent">I wished them</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="editEventDatetime">Date &amp; time</label>
+        <input type="datetime-local" id="editEventDatetime" required />
+      </div>
+      <button type="submit" class="btn-primary">Save changes</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
