@@ -8,9 +8,9 @@ It turns birthday wishes into simple, transparent data without turning friendshi
 
 ---
 
-## ✨ Features
+## Features
 
-### 📊 Dashboard
+### Dashboard
 
 A central overview of your birthday circle.
 
@@ -19,7 +19,7 @@ A central overview of your birthday circle.
 * Recently logged wish events
 * Quick access to people and upcoming birthdays
 
-### 📅 Calendar
+### Calendar
 
 A monthly birthday calendar showing everyone in your circle.
 
@@ -27,7 +27,7 @@ A monthly birthday calendar showing everyone in your circle.
 * Navigate between months
 * Click a birthday to open that person's details
 
-### 👥 Your Circle
+### Your Circle
 
 Manage everyone whose birthdays you want to track.
 
@@ -36,7 +36,7 @@ Manage everyone whose birthdays you want to track.
 * Filter birthdays coming up within **30 days**
 * Open any person for their complete history
 
-### 🎂 Today
+### Today
 
 A dedicated sidebar showing what's relevant right now.
 
@@ -47,7 +47,7 @@ A dedicated sidebar showing what's relevant right now.
 
 ---
 
-## 📝 Full CRUD
+## Full CRUD
 
 WishBack supports complete **Create, Read, Update, and Delete** functionality.
 
@@ -102,7 +102,7 @@ Every wish event receives a playful timing label based on its timestamp compared
 
 ---
 
-## 💯 WishBack Score
+## WishBack Score
 
 The **WishBack Score** provides a simple measure of birthday reciprocity.
 
@@ -127,7 +127,7 @@ It simply answers:
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 WishBack uses a simple data model:
 
@@ -148,7 +148,7 @@ Because wish events are stored individually, the application can build a history
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 WishBack intentionally uses a simple, dependency-free frontend.
 
@@ -169,7 +169,7 @@ Everything runs directly in the browser.
 
 ---
 
-## 🚀 Run Locally
+## Run Locally
 
 Clone the repository:
 
@@ -200,7 +200,7 @@ You can also open `index.html` directly in your browser.
 
 ---
 
-## 💾 Data Storage
+## Data Storage
 
 Currently, all WishBack data is stored locally using the browser's:
 
@@ -219,9 +219,9 @@ Clearing browser storage will remove the locally stored application data.
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
-### Phase 1 — Frontend ✅
+### Phase 1 — Frontend
 
 * Multi-view application
 * People management
@@ -267,7 +267,7 @@ Users
 
 ---
 
-## 🎯 Why WishBack?
+## Why WishBack?
 
 Birthdays are small things that can sometimes reveal interesting patterns.
 
@@ -281,11 +281,11 @@ Maybe you forgot.
 
 WishBack isn't designed to tell you **who is a good friend**.
 
-It's designed to give you a simple place to remember what actually happened — without the drama. 🎂
+It's designed to give you a simple place to remember what actually happened — without the drama. 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 WishBack/
@@ -298,7 +298,7 @@ WishBack/
 
 ---
 
-## 🔐 Privacy
+## Privacy
 
 WishBack currently stores data locally in your browser using `localStorage`.
 
@@ -306,15 +306,15 @@ No backend or external database is required for the current version.
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **MIT License**.
 
-Do whatever you want with it. 💛
+Do whatever you want with it. 
 
 ---
 
-## 👩‍💻 Project
+## Project
 
 **WishBack** — *Remember the people who remember you.*
 
